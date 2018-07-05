@@ -1,0 +1,82 @@
+<div class="login">
+  <div class="card">
+    <div class="card-block">
+      <form class="form-signin" method="post">
+        <h2 class="form-signin-heading">SIGN UP</h2>
+        <hr>
+        <div class="col-md-12">
+          <div class="col-md-6 f_name">
+            <div class="form-group <%= 'has-danger' unless @errors['f_name'].empty? %>">
+
+              <label for="f_name" class="sr-only">Last Name</label>
+              <input name="f_name" type="text" class="form-control" placeholder="First Name" value="<%= @values['f_name_v'] %>">
+              <% unless @errors['f_name'].empty? %>
+                <% @errors['f_name'].each do |error| %>
+                  <div class='form-control-feedback'>
+                    <%= error %></div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="col-md-6 l_name" style="float: left;">
+
+            <div class="form-group <%= 'has-danger' unless @errors['l_name'].empty? %>">
+
+              <label for="l_name" class="sr-only">Last Name</label>
+              <input name="l_name" type="text" class="form-control" placeholder="Last Name" value="<%= @values['l_name_v'] %>">
+              <% unless @errors['l_name'].empty? %>
+                <% @errors['l_name'].each do |error| %>
+                  <div class='form-control-feedback'>
+                    <%= error %></div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+          <div class="form-group <%= 'has-danger' unless @errors['email'].empty? %>">
+
+            <label for="inputEmail" class="sr-only">Email address</label>
+            <input name="email" type="text" class="form-control" placeholder="Email address" value="<%= @values['email_v'] %>">
+            <% unless @errors['email'].empty? %>
+              <% @errors['email'].each do |error| %>
+                <div class='form-control-feedback'>
+                  <%= error %></div>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="form-group <%= 'has-danger' unless @errors['password'].empty? %>">
+
+            <label for="inputPassword" class="sr-only">Password</label>
+            <div class="input-group" >
+              <input name="password" id="password_show" type="password" class="form-control" placeholder="Password" value="<%= @values['password_v'] %>">
+              <span style="" id="password_show_button" class="input-group-addon"><i class="fa fa-eye-slash" aria-hidden="true"></i></span>
+            </div>
+            <% unless @errors['password'].empty? %>
+              <% @errors['password'].each do |error| %>
+                <div class='form-control-feedback'>
+                  <%= error %></div>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="form-group <%= 'has-danger' unless @errors['confirm_password'].empty? %>">
+
+            <label for="inputPassword" class="sr-only">Confirm Password</label>
+            <div class="input-group" >
+              <input name="confirm_password" id="confirm_password_show" type="password" class="form-control" placeholder="Confirm Password" value="<%= @values['confirm_password_v'] %>">
+              <span style="" id="confirm_password_show_button" class="input-group-addon"><i class="fa fa-eye-slash" aria-hidden="true"></i></span>
+            </div>
+            <% unless @errors['confirm_password'].empty? %>
+              <% @errors['confirm_password'].each do |error| %>
+                <div class='form-control-feedback'>
+                  <%= error %></div>
+              <% end %>
+            <% end %>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: micro_learning_dev
+  pool: 2
+  username:
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: micro_learning_test
+  pool: 2
+  username:
+  password:

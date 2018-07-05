@@ -2,9 +2,15 @@
   <div class="inner">
     <h3 class="masthead-brand">Micro Learning App</h3>
     <nav class="nav nav-masthead">
-      <a class="nav-link active" href="#">Home</a>
-      <a class="nav-link" href="#">Features</a>
-      <a class="nav-link" href="#">Contact</a>
+      <% if session[:user] %>
+        <a class="nav-link <%= active_page?('home') %>" href="/">Home</a>
+        <a class="nav-link <%= active_page?('learn') %>" href="/learn">Learn</a>
+        <a class="nav-link <%= active_page?('about') %>" href="/about">About</a>
+        <a class="nav-link" href="/user/logout">Logout</a>
+      <% else %>
+        <a class="nav-link <%= active_page?('login') %>" href="/user/login">Login</a>
+        <a class="nav-link <%= active_page?('register') %>" href="/user/register">Register</a>
+      <% end %>
     </nav>
   </div>
 </div>

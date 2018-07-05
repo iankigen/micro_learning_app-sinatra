@@ -25,15 +25,13 @@ a:hover {
  */
 
 html,
-body {
-  height: 100%;
-  background-color: #333;
-}
+
 body {
   color: #fff;
+  height: 100%;
   text-align: center;
-  text-shadow: 0 .05rem .1rem rgba(0,0,0,.5);
 }
+
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
@@ -157,4 +155,54 @@ body {
   .cover-container {
     width: 42rem;
   }
+}
+
+/*
+ * Custom styles
+ */
+.card-block {
+  color: black;
+  padding-left: 10px;
+  text-align: left;
+}
+
+.auth-links a {
+  color: black;
+}
+
+.register-text {
+  text-align: right
+}
+
+.login > .card {
+  width: 40rem;
+  height: auto;
+  margin: 0 auto;
+  float: none;
+  margin-bottom: 10px;
+}
+
+.background-img {
+
+  background-image: url("bg.jpg");
+  background-size: cover;
+}
+
+.app-footer {
+  color: white;
+}
+
+.f_name {
+  float: left;
+  padding-left: 0;
+}
+.l_name {
+  float: left;
+  padding-right: 0;
+}
+
+.page_not_found {
+  float: left;
+  flex: auto;
+  text-align: left;
 }

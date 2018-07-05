@@ -6,16 +6,18 @@
   <meta name="description" content="">
   <title>Micro-Learning app</title>
   <link rel='stylesheet' type='text/css' href='bootstrap.min.css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel='stylesheet' type='text/css' href='style.css'>
 </head>
 
 <body>
 
-<div class="site-wrapper">
+<div class="site-wrapper background-img">
   <div class="site-wrapper-inner">
     <div class="cover-container">
 
       <%= partial('shared/_nav') %>
+      <%= partial('shared/_flash') %>
 
       <%= yield %>
 
@@ -28,5 +30,6 @@
 <script src="jquery.min.js"></script>
 <script src="tether.min.js"></script>
 <script src="bootstrap.min.js"></script>
+<script src="show-password.min.js"></script>
 </body>
 </html>
