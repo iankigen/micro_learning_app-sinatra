@@ -1,13 +1,10 @@
 class PagesController < ApplicationController
-
-
-  layout 'pages_layout'
-
-  get '/' do
-    @name = 'ian'
-    erb :pages_home
+  get '/', auth: :user do
+    @page = 'home'
+    erb :'pages/pages_home'
   end
-  get '/about' do
-    erb :pages_about
+  get '/about', auth: :user do
+    @page = 'about'
+    erb :'pages/pages_about'
   end
 end
