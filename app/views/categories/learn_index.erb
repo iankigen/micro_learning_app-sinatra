@@ -1,0 +1,44 @@
+<div>
+  <div style="height: 100px"></div>
+  <div class="card">
+    <div class="card-block">
+      <div class="container">
+        <div class="row">
+          <% if @top_headlines %>
+            <% @top_headlines.each do |top_headline| %>
+              <div class="blog-post">
+                <h2 class="blog-post-title"><%= top_headline.title %></h2>
+                <img src="<%= top_headline.urlToImage %>" class="img-fluid" alt="">
+                <p class="blog-post-meta"><%= top_headline.author %></p>
+
+                <p><%= top_headline.description %></p>
+                <a class="btn btn-outline-success" href="<%= top_headline.url %>">Learn More</a>
+                <hr>
+              </div>
+            <% end %>
+            <nav class="blog-pagination">
+              <a class="btn btn-outline-primary" href="#">Older</a>
+              <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
+            </nav>
+          <% else %>
+            <div class="inner cover">
+              <div class="page_not_found">
+                <h1 class="">Oops!</h1>
+                <h3 class="">This is awkward</h3>
+                <p class="">You don't have any category at the moment.</p>
+
+                <hr>
+
+                <p class="lead">
+                  <a href="/learn/add" class="btn btn-lg btn-outline-success">Try adding a Category</a>
+                </p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

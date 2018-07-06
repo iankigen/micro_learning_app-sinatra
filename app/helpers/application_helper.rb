@@ -1,8 +1,12 @@
+require 'news-api'
+
 module ApplicationHelpers
+  @news_api = News.new('77cf0019ddac41acb887527a1c06111c')
+
   def is_user?
     begin
       user = Users.find_by(email = session[:user]['email'])
-      return true if user
+      return user if user
     rescue StandardError
       # ignored
     end
@@ -138,5 +142,22 @@ module ApplicationHelpers
 
   def active_page?(page)
     'active' if page == @page
+  end
+
+  def fetch_all_categories
+    pages = 1
+    @news_api.get_everything(
+      language: 'en',
+      sources: 'techcrunch,talksport,the-next-web,
+                national-geographic, al-jazeera-english,
+                crypto-coins-news',
+      page: pages
+    )
+  end
+
+  def fetch_specific_category(category)
+    @news_api.get_sources(language: 'en',
+                          sortBy: 'relevancy',
+                          sources: category)
   end
 end

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'activerecord', '~> 5.2'
 gem 'bcrypt', '~> 3.1', '>= 3.1.12'
+gem 'news-api', '~> 0.0.0'
 gem 'pg', '~> 1.0'
 gem 'sinatra'
 gem 'sinatra-activerecord', '~> 2.0', '>= 2.0.13'
