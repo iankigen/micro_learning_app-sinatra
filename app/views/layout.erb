@@ -15,14 +15,16 @@
 <div class="site-wrapper background-img">
   <div class="site-wrapper-inner">
     <div class="cover-container">
-
-      <%= partial('shared/_nav') %>
-      <%= partial('shared/_flash') %>
-
-      <%= yield %>
-
-      <%= partial('shared/_footer') %>
-
+      <div>
+        <%= partial('shared/_nav') %>
+        <%= partial('shared/_flash') %>
+      </div>
+      <div>
+        <%= yield %>
+      </div>
+      <div>
+        <%= partial('shared/_footer') %>
+      </div>
     </div>
   </div>
 </div>

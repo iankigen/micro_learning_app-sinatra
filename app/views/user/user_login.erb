@@ -31,6 +31,7 @@
             <label for="inputPassword" class="sr-only">Password</label>
             <div class="input-group" >
               <input name="password" id="password_show" type="password" class="form-control" placeholder="Password" value="<%= @values['password_v'] %>">
+<!--              <input name="password" id="password_show" type="password" class="form-control" placeholder="Password" value="devpassword">-->
               <span style="" id="password_show_button" class="input-group-addon"><i class="fa fa-eye-slash" aria-hidden="true"></i></span>
             </div>
             <% unless @errors['password'].empty? %>
