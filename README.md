@@ -1,8 +1,6 @@
-#Micro Learning App
+## Micro Learning App
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/bubble_sort`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Micro-Learning app is a responsive web application that sends you one page per day about something you want to learn.
 
 ## Installation
 
@@ -11,11 +9,6 @@ Add this line to your application's Gemfile:
 ```ruby
 
 ```
-
-And then execute:
-
-    $ bundle
-
 
 
 ## Contributing
