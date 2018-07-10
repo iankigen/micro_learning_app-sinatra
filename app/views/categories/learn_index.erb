@@ -5,16 +5,18 @@
       <div class="container">
         <div class="row">
           <% if @top_headlines %>
-            <% @top_headlines.each do |top_headline| %>
-              <div class="blog-post">
-                <h2 class="blog-post-title"><%= top_headline.title %></h2>
-                <img src="<%= top_headline.urlToImage %>" class="img-fluid" alt="">
-                <p class="blog-post-meta"><%= top_headline.author %></p>
+            <% @top_headlines.each do |top_headlines| %>
+              <% top_headlines.each do |top_headline| %>
+                <div class="blog-post">
+                  <h2 class="blog-post-title"><%= top_headline.title %></h2>
+                  <img src="<%= top_headline.urlToImage %>" class="img-fluid" alt="">
+                  <p class="blog-post-meta"><%= top_headline.author %></p>
 
-                <p><%= top_headline.description %></p>
-                <a class="btn btn-outline-success" href="<%= top_headline.url %>">Learn More</a>
-                <hr>
-              </div>
+                  <p><%= top_headline.description %></p>
+                  <a class="btn btn-outline-success" href="<%= top_headline.url %>">Learn More</a>
+                  <hr>
+                </div>
+              <% end %>
             <% end %>
             <nav class="blog-pagination">
               <a class="btn btn-outline-primary" href="#">Older</a>

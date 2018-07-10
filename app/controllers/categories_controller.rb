@@ -1,27 +1,20 @@
 require 'news-api'
+require 'byebug'
+
 
 class CategoriesController < ApplicationController
-  get '/', auth: :user do
+  get '/learn', auth: :user do
     @page = 'learn'
-    newsapi = News.new('77cf0019ddac41acb887527a1c06111c')
-
-    user = Users.find_by(email = session[:user]['email'])
-    categories = Categories.find_by(users_id: user.id)
-
-    @top_headlines = newsapi.get_top_headlines(q: categories.name,
-                                               language: 'en',
-                                               page: 1,
-                                               sortBy: 'popularity')
-
+    @top_headlines = get_news
     erb :'/categories/learn_index'
   end
 
-  get '/add' do
+  get '/learn/add' do
     @page = 'learn'
     erb :'/categories/learn_form'
   end
 
-  post '/add', auth: :user do
+  post '/learn/add', auth: :user do
     @page = 'learn'
     @category = Categories.new(params)
     user = is_user? if is_user?
@@ -33,8 +26,9 @@ class CategoriesController < ApplicationController
     end
   end
 
-  put '/' do
-    # session[:user] = nil
+  get '/sendmail' do
+
+
     erb :'/categories/learn_form'
   end
 
