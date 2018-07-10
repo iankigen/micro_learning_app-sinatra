@@ -1,11 +1,11 @@
 require 'news-api'
 
 module ApplicationHelpers
-  @news_api = News.new('77cf0019ddac41acb887527a1c06111c')
+  @@news_api = News.new('77cf0019ddac41acb887527a1c06111c')
 
   def is_user?
     begin
-      user = Users.find_by(email = session[:user]['email'])
+      user = Users.find_by_email(session[:user][:email])
       return user if user
     rescue StandardError
       # ignored
@@ -121,7 +121,7 @@ module ApplicationHelpers
   end
 
   def handle_sessions(user_params)
-    @user = Users.find_by(email: user_params['email'])
+    @user = Users.find_by_email(user_params['email'])
     if @user
       if @user.confirm_password(user_params['password'])
         session[:user] = {
@@ -144,20 +144,19 @@ module ApplicationHelpers
     'active' if page == @page
   end
 
-  def fetch_all_categories
-    pages = 1
-    @news_api.get_everything(
-      language: 'en',
-      sources: 'techcrunch,talksport,the-next-web,
-                national-geographic, al-jazeera-english,
-                crypto-coins-news',
-      page: pages
-    )
-  end
-
-  def fetch_specific_category(category)
-    @news_api.get_sources(language: 'en',
-                          sortBy: 'relevancy',
-                          sources: category)
+  def get_news
+    user = Users.find_by_email(session[:user][:email])
+    categories = Categories.where(users_id: user.id)
+    data = []
+    if categories
+      categories.each do |cat|
+        data << @@news_api.get_top_headlines(q: cat.name,
+                                             language: 'en',
+                                             page: 1,
+                                             sortBy: 'popularity')
+      end
+    end
+    data = nil if data.empty?
+    data
   end
 end

@@ -1,10 +1,9 @@
 require 'sinatra'
 require 'sinatra/partial'
 require 'sinatra/flash'
+
 Dir.glob('./app/{models}/*.rb').each { |file| require file }
 require './app/helpers/application_helper'
-
-require 'pry'
 
 class ApplicationController < Sinatra::Base
   helpers ApplicationHelpers
@@ -24,5 +23,4 @@ class ApplicationController < Sinatra::Base
       end
     end
   end
-
 end

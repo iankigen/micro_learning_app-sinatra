@@ -1,12 +1,12 @@
 class UserController < ApplicationController
-  get '/login' do
+  get '/user/login' do
     @page = 'login'
     @values = display_login_values
     @errors = display_login_errors
     erb :'/user/user_login'
   end
 
-  post '/login' do
+  post '/user/login' do
     @page = 'login'
     data = validate_login_params(params)
     @errors = data.first.first
@@ -23,19 +23,19 @@ class UserController < ApplicationController
     erb :'/user/user_login'
   end
 
-  get '/logout', auth: :user do
+  get '/user/logout', auth: :user do
     session[:user] = nil
     redirect '/user/login'
   end
 
-  get '/register' do
+  get '/user/register' do
     @page = 'register'
     @errors = display_signup_errors
     @values = display_signup_values
     erb :'/user/user_register'
   end
 
-  post '/register' do
+  post '/user/register' do
     @page = 'register'
     data = user_register_params
     @errors = data.first.first
@@ -55,12 +55,12 @@ class UserController < ApplicationController
     erb :'/user/user_register'
   end
 
-  get '/reset-password', auth: :user do
+  get '/user/reset-password', auth: :user do
     @page = 'reset-password'
     erb :'/user/user_reset_password'
   end
 
-  get '/forgot-password' do
+  get '/user/forgot-password' do
     @page = 'forgot-password'
     erb :'/user/user_forgot_password'
   end
