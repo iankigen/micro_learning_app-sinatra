@@ -63,12 +63,12 @@ gem 'sinatra-partial', '~> 1.0', '>= 1.0.1'
 | ---- | --------------- |
 | [GET /](#) | Home. |
 | [GET /about](#) | About Page. |
-| [GET /user/register](#) |  Register user.  |
-| [GET /user/login](#) | Login user. |
-| [GET /user/logout](#) | Logout user. |
-| [POST /learn/add](#) | Add a category you are interested in learning |
+| [GET /register](#) |  Register user.  |
+| [GET /login](#) | Login user. |
+| [GET /logout](#) | Logout user. |
+| [POST /add-category](#) | Add a category you are interested in learning |
 | [GET /learn/](#) | List all items of categories you want to learn. |
-| [GET /learn/delete](#) | Delete a category. |
+| [GET /delete-category](#) | Delete a category. |
 
 ## Done features
 
