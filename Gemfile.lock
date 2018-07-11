@@ -17,9 +17,12 @@ GEM
     byebug (10.0.2)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
+    database_cleaner (1.7.0)
     diff-lcs (1.3)
     et-orbi (1.1.2)
       tzinfo
+    factory_bot (4.10.0)
+      activesupport (>= 3.0.0)
     fugit (1.1.3)
       et-orbi (~> 1.1, >= 1.1.1)
       raabro (~> 1.1)
@@ -84,6 +87,8 @@ DEPENDENCIES
   activerecord (~> 5.2)
   bcrypt (~> 3.1, >= 3.1.12)
   byebug
+  database_cleaner (~> 1.7)
+  factory_bot (~> 4.10)
   news-api (~> 0.0.0)
   pg (~> 1.0)
   pony (~> 1.12)

@@ -1,4 +1,7 @@
-class PagesController < ApplicationController
+require 'sinatra'
+
+Dir.glob('./app/{models}/*.rb').each { |file| require file }
+class App < Sinatra::Application
   get '/', auth: :user do
     @page = 'home'
     erb :'pages/pages_home'

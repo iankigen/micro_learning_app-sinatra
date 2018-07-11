@@ -2,6 +2,9 @@
   <div class="mastfoot">
     <div class="inner">
       <p>&copy; <%= Time.now.year %> | <b>Ian Kigen</b> All rights reserved</p>
+      <% if @page == 'learn' %>
+        <a class="btn btn-outline-success" href="#">Back to top</a>
+      <% end %>
     </div>
   </div>
 </footer>

@@ -4,6 +4,21 @@
     <div class="card-block">
       <div class="container">
         <div class="row">
+          <div class="container">
+
+            <% if @categories %>
+              <a class="btn btn-outline-primary" href="/add-category">Add new Category</a>
+              <hr>
+              <% @categories.each do |category| %>
+                <span class="badge badge-pill badge-info"><%= category.name %>
+                  <a href="/delete-category/<%= category.id %>"><span aria-hidden="true">&times;</span></a>
+                </span>
+
+              <% end %>
+            <% end %>
+            <hr>
+          </div>
+
           <% if @top_headlines %>
             <% @top_headlines.each do |top_headlines| %>
               <% top_headlines.each do |top_headline| %>
@@ -32,7 +47,7 @@
                 <hr>
 
                 <p class="lead">
-                  <a href="/learn/add" class="btn btn-lg btn-outline-success">Try adding a Category</a>
+                  <a href="/add-category" class="btn btn-lg btn-outline-success">Try adding a Category</a>
                 </p>
               </div>
             </div>

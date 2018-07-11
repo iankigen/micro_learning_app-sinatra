@@ -1,12 +1,16 @@
-class UserController < ApplicationController
-  get '/user/login' do
+require 'sinatra'
+
+Dir.glob('./app/{models}/*.rb').each { |file| require file }
+
+class App < Sinatra::Application
+  get '/login' do
     @page = 'login'
     @values = display_login_values
     @errors = display_login_errors
     erb :'/user/user_login'
   end
 
-  post '/user/login' do
+  post '/login' do
     @page = 'login'
     data = validate_login_params(params)
     @errors = data.first.first
@@ -23,19 +27,19 @@ class UserController < ApplicationController
     erb :'/user/user_login'
   end
 
-  get '/user/logout', auth: :user do
+  get '/logout' do
     session[:user] = nil
-    redirect '/user/login'
+    redirect '/login'
   end
 
-  get '/user/register' do
+  get '/register' do
     @page = 'register'
     @errors = display_signup_errors
     @values = display_signup_values
     erb :'/user/user_register'
   end
 
-  post '/user/register' do
+  post '/register' do
     @page = 'register'
     data = user_register_params
     @errors = data.first.first
@@ -49,18 +53,18 @@ class UserController < ApplicationController
         flash.next[:success] = {
           msg: 'Registration successful. Please Login'
         }
-        redirect '/user/login'
+        redirect '/login'
       end
     end
     erb :'/user/user_register'
   end
 
-  get '/user/reset-password', auth: :user do
+  get '/reset-password' do
     @page = 'reset-password'
     erb :'/user/user_reset_password'
   end
 
-  get '/user/forgot-password' do
+  get '/forgot-password' do
     @page = 'forgot-password'
     erb :'/user/user_forgot_password'
   end
