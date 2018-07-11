@@ -1,38 +1,38 @@
-require 'news-api'
-require 'byebug'
+require 'sinatra'
 
-
-class CategoriesController < ApplicationController
+Dir.glob('./app/{models}/*.rb').each { |file| require file }
+class App < Sinatra::Application
   get '/learn', auth: :user do
     @page = 'learn'
-    @top_headlines = get_news
+    user = Users.find_by_email(session[:user][:email])
+    @category = Categories.new
+    res = @category.fetch_articles(user.id)
+    @categories = res.first
+    @top_headlines = res.last
     erb :'/categories/learn_index'
   end
 
-  get '/learn/add' do
+  get '/add-category' do
     @page = 'learn'
     erb :'/categories/learn_form'
   end
 
-  post '/learn/add', auth: :user do
+  get '/delete-category/:id' do
+    id = params[:id]
+    @category = Categories.find(id)
+    @category.destroy
+    redirect '/learn'
+  end
+
+  post '/add-category', auth: :user do
     @page = 'learn'
     @category = Categories.new(params)
     user = is_user? if is_user?
     @category.users = user
     if @category.save
-      redirect '/'
+      redirect '/learn'
     else
       erb :'/categories/learn_form'
     end
-  end
-
-  get '/sendmail' do
-
-
-    erb :'/categories/learn_form'
-  end
-
-  def user_register_params
-    validate_signup_params(params)
   end
 end
