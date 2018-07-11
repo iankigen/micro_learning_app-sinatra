@@ -15,12 +15,20 @@ $ git clone https://github.com/iankigen/micro_learning_app-sinatra.git && cd mic
 $ bundle install
 ```
 
+- Run migrations
+```
+$ rake db:migrate
+```
 - Run the server
 ```
 $ rackup
 ```
 
-visit http://127.0.0.1:9292/ in your browser.
+## Start email cron
+
+```
+$ ruby lib/scheduler.rb
+```
 
 
 ## Dependencies
