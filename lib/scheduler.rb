@@ -53,4 +53,8 @@ scheduler.cron '0 0 6 * * *' do
   send_mail
 end
 
+scheduler.in '5s' do
+  send_mail
+end
+
 scheduler.join

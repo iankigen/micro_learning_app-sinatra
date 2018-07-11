@@ -1,10 +1,4 @@
 require 'sinatra'
+require './app/controllers/main_controller.rb'
 
-Dir.glob('./app/{controllers, helpers, models}/*.rb').each { |file| require file }
-
-
-use PagesController
-use UserController
-use CategoriesController
-
-run ApplicationController
+run App.new
