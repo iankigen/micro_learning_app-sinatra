@@ -12,12 +12,12 @@ class App < Sinatra::Application
     erb :'/categories/learn_index'
   end
 
-  get '/add-category' do
+  get '/add-category', auth: :user do
     @page = 'learn'
     erb :'/categories/learn_form'
   end
 
-  get '/delete-category/:id' do
+  get '/delete-category/:id', auth: :user do
     id = params[:id]
     @category = Categories.find(id)
     @category.destroy
