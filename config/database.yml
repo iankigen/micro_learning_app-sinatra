@@ -3,8 +3,8 @@ development:
   encoding: unicode
   database: micro_learning_dev
   pool: 2
-  username:
-  password:
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
 
 test:
   adapter: postgresql
@@ -13,3 +13,12 @@ test:
   pool: 2
   username:
   password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: <%= ENV['DATABASE_HOST'] %>
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
