@@ -16,9 +16,12 @@ group :development do
 end
 
 group :test do
+  gem 'coveralls', '~> 0.8.22'
   gem 'database_cleaner', '~> 1.7'
+  gem 'factory_bot', '~> 4.10'
   gem 'rack-test', '~> 1.0'
   gem 'rake', '~> 12.3', '>= 12.3.1'
   gem 'rspec', '~> 3.7'
-  gem 'factory_bot', '~> 4.10'
+  gem 'simplecov', '~> 0.16.1'
+  gem 'webmock', '~> 3.4', '>= 3.4.2'
 end
