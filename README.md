@@ -1,6 +1,6 @@
 ## Micro Learning App
 
-[![Build Status](https://travis-ci.org/iankigen/micro_learning_app-sinatra.svg?branch=master)](https://travis-ci.org/iankigen/micro_learning_app-sinatra)
+[![Build Status](https://travis-ci.org/iankigen/micro_learning_app-sinatra.svg?branch=master)](https://travis-ci.org/iankigen/micro_learning_app-sinatra) [![Coverage Status](https://coveralls.io/repos/github/iankigen/micro_learning_app-sinatra/badge.svg?branch=master)](https://coveralls.io/github/iankigen/micro_learning_app-sinatra?branch=master)
 
 
 Micro-Learning app is a responsive web application that sends you one page per day about something you want to learn.
