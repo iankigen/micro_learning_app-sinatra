@@ -2,6 +2,15 @@
 
 Micro-Learning app is a responsive web application that sends you one page per day about something you want to learn.
 
+## Environment Variables
+```
+- DATABASE_USER
+- DATABASE_PASSWORD
+- SMTP_EMAIL
+- SMTP_PASSWORD
+- DOMAIN_NAME
+```
+
 ## Installation
 
 - clone the application to you local machine
@@ -14,7 +23,10 @@ $ git clone https://github.com/iankigen/micro_learning_app-sinatra.git && cd mic
 ```
 $ bundle install
 ```
-
+- Setup Database
+```
+$ rake db:setup
+```
 - Run migrations
 ```
 $ rake db:migrate
@@ -81,10 +93,12 @@ gem 'sinatra-partial', '~> 1.0', '>= 1.0.1'
 ## Done features
 
 - Authentication 
-
+- CRUD Learn
+- User Email Notification
+- Testing
 ## WIP features
 
-- User Notification (Email)
+- Deployment
 
 ## Contributing
 
