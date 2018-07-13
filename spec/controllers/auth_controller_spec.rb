@@ -1,7 +1,6 @@
 require_relative '../spec_helper'
 
 describe 'Authentication' do
-
   before do
     @user_datails = {
       f_name: 'test',
@@ -17,6 +16,20 @@ describe 'Authentication' do
       email: '',
       password: '',
       confirm_password: ''
+    }
+    @invalid_login = {
+      email: '',
+      password: ''
+    }
+
+    @valid_login = {
+      email: 'test@site.com',
+      password: 'password'
+    }
+
+    @invalid_credentials = {
+      email: 'invalid@mail.com',
+      password: 'invalid'
     }
   end
   context 'When user opens register page' do
@@ -60,13 +73,44 @@ describe 'Authentication' do
     end
   end
 
-  # context 'When user enters correct login details' do
-  #
-  #   it 'should login successfully' do
-  #     post '/login', @user_datails
-  #     expect(last_response.body).to eq('sdsd')
-  #   end
-  # end
+  context 'When user enters incorrect login details' do
 
+    it 'should give validation errors' do
+      post '/login', @invalid_login
+      expect(last_response.body).to include('Password cannot be empty',
+                                            'Invalid email address',
+                                            'Email cannot be empty')
+    end
+  end
 
+  context 'When user enters correct credentials' do
+    it 'should login successfully' do
+      create(:users)
+      post '/login', @valid_login
+      expect(last_response).to be_redirect
+      follow_redirect!
+      expect(last_request.path).to eq('/')
+    end
+  end
+
+  context 'When user enters invalid credentials without validation errors' do
+    it 'should give authentication errors' do
+      create(:users)
+      post '/login', @invalid_credentials
+      expect(last_response.body).to include('Invalid email address or password.')
+    end
+  end
+
+  context 'When user logs out' do
+    before do
+      create(:users)
+      post '/login', @valid_login
+      get '/logout'
+    end
+    it 'should redirect to login page' do
+      expect(last_response).to be_redirect
+      follow_redirect!
+      expect(last_request.path).to eq('/login')
+    end
+  end
 end
