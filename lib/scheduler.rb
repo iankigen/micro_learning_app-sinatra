@@ -1,11 +1,10 @@
 require 'rufus-scheduler'
 require 'pony'
 require 'news-api'
-require 'byebug'
 
 Dir.glob('./app/{models, helpers}/*.rb').each { |file| require file }
 
-@@news_api = News.new('77cf0019ddac41acb887527a1c06111c')
+@@news_api = News.new(ENV['KEY'])
 
 Pony.options = {
   from: 'no-reply@site.com',

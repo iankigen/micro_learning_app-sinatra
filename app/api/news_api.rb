@@ -2,7 +2,7 @@ require 'news-api'
 
 class NewsApi
   def initialize
-    @news_api = News.new('77cf0019ddac41acb887527a1c06111c')
+    @news_api = News.new(ENV['KEY'])
   end
 
   def fetch_articles(query)
