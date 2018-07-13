@@ -14,7 +14,7 @@ describe 'Authentication' do
       f_name: 'invalid',
       l_name: 'user',
       email: '',
-      password: '',
+      password: 'mismatch',
       confirm_password: ''
     }
     @invalid_login = {
@@ -52,12 +52,23 @@ describe 'Authentication' do
     end
   end
 
+  context 'When user registers an already existing user' do
+    before do
+      post '/register', @user_datails
+    end
+    it 'should return email already exist' do
+      post '/register', @user_datails
+      expect(last_response.body).to include('Sorry, that email is already taken. Try another?')
+    end
+  end
+
   context 'When user enters invalid sign up credentials' do
     it 'should display validation errors when input is incorrect' do
       post '/register', @invalid_user
       expect(last_response.body).to include('Confirm password must be more than 6 characters',
                                             'Invalid email address',
-                                            'Email cannot be empty')
+                                            'Email cannot be empty',
+                                            'Sorry, Password Mismatch')
     end
   end
 

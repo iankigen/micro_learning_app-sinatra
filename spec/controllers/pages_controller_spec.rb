@@ -28,7 +28,7 @@ describe 'Pages' do
     end
     it 'should load successfully' do
       expect(last_response).to be_ok
-      expect(last_response.body).to include('THIS IS THE ABOUT PAGE')
+      expect(last_response.body).to include('Micro Learning App')
     end
   end
 

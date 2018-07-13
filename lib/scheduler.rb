@@ -4,8 +4,6 @@ require 'news-api'
 
 Dir.glob('./app/{models, helpers}/*.rb').each { |file| require file }
 
-@@news_api = News.new(ENV['KEY'])
-
 Pony.options = {
   from: 'no-reply@site.com',
   headers: { 'Content-Type' => 'text/html' },
@@ -23,12 +21,14 @@ Pony.options = {
 }
 
 def send_mail
+  news_api = News.new(ENV['KEY'])
+
   users = Users.all
   users.each do |user|
     categories = Categories.where(users_id: user.id)
     next unless categories.first
     q = categories[rand(categories.length).to_i].name
-    news = @@news_api.get_top_headlines(q: q,
+    news = news_api.get_top_headlines(q: q,
                                         language: 'en',
                                         page: 1,
                                         sortBy: 'popularity')
@@ -45,10 +45,16 @@ def send_mail
   end
 end
 
+puts '=' * 10
+puts 'scheduler running'
+puts '=' * 10
+
 scheduler = Rufus::Scheduler.new
 
 scheduler.cron '0 0 6 * * *' do
   # do something every day 6.am
+  puts '>' * 5
+  puts 'mail sent'
   send_mail
 end
 

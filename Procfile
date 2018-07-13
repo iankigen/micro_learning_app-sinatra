@@ -1,2 +1,2 @@
 web: bundle exec rackup config.ru -p $PORT
-worker: ruby lib/scheduler.rb
+worker: bundle exec ruby lib/scheduler.rb
