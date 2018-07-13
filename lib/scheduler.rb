@@ -19,7 +19,7 @@ Pony.options = {
     user_name: ENV['SMTP_EMAIL'],
     password: ENV['SMTP_PASSWORD'],
     authentication: :plain,
-    domain: 'localhost.localdomain'
+    domain: ENV['DOMAIN_NAME']
   }
 }
 
